@@ -615,3 +615,40 @@ export const productData = [
     },
   },
 ];
+
+export const orderData = [
+  {
+    id: 98374562,
+    email: " ",
+    financial_status: "pending",
+    title: "Crown Charm",
+    product_number: 60011685,
+    price: 250,
+    img:
+      "https://media.tiffany.com/is/image/Tiffany/23457814_927014_ED?$EcomItemMax$&id=sdRqB1&fmt=jpg&fit=constrain,1&wid=860&hei=860&hei=1724&wid=1724&qlt=90&op_usm=2.0,1.0,6.0&$cropN=0.1,0.1,0.8",
+    grams: "1300",
+    quantity: 2,
+    price: 13.5,
+    rate: 0.06,
+    kind: "authorization",
+    status: "Pending",
+    amount: 500,
+  },
+  {
+    id: 78234662,
+    email: " ",
+    financial_status: "pending",
+    title: "Round Brilliant Diamond",
+    product_number: 60011685,
+    price: 250,
+    img:
+      "https://media.tiffany.com/is/image/Tiffany/EcomItemL2/tiffany-true-engagement-ring-with-a-round-brilliant-diamond-68975425_1028237_ED_M.jpg",
+    grams: "1300",
+    quantity: 1,
+    price: 13.5,
+    rate: 0.06,
+    kind: "authorization",
+    status: "Paid",
+    amount: 250,
+  },
+];

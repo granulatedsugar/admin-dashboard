@@ -19,6 +19,7 @@ import {
 import Products from "views/Dashboard/Products";
 import { HamburgerIcon } from "@chakra-ui/icons";
 import Users from "views/Dashboard/Users";
+import Orders from "views/Dashboard/Orders";
 
 var dashRoutes = [
   {
@@ -27,6 +28,14 @@ var dashRoutes = [
     rtlName: "لوحة القيادة",
     icon: <HomeIcon color="inherit" />,
     component: Dashboard,
+    layout: "/admin",
+  },
+  {
+    path: "/order",
+    name: "Orders",
+    rtlName: "لوحة القيادة",
+    icon: <DocumentIcon color="inherit" />,
+    component: Orders,
     layout: "/admin",
   },
   {

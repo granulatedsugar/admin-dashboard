@@ -11,16 +11,34 @@ import {
 import React from "react";
 
 function TablesTableRow(props) {
-  const { logo, name, email, subdomain, domain, status, date } = props;
+  const {
+    key,
+    img,
+    component,
+    colOneMain,
+    colOneSub,
+    colTwoMain,
+    colTwoSub,
+    colThree,
+    colFour,
+  } = props;
   const textColor = useColorModeValue("gray.700", "white");
   const bgStatus = useColorModeValue("gray.400", "#1a202c");
   const colorStatus = useColorModeValue("white", "gray.400");
+
+  const formatter = new Intl.NumberFormat("en-US", {
+    style: "currency",
+    currency: "USD",
+  });
+  console.log(component);
+  console.log(img);
+  console.log(key);
 
   return (
     <Tr>
       <Td minWidth={{ sm: "250px" }} pl="0px">
         <Flex align="center" py=".8rem" minWidth="100%" flexWrap="nowrap">
-          <Avatar src={logo} w="50px" borderRadius="12px" me="18px" />
+          <Avatar src={img} w="50px" borderRadius="12px" me="18px" />
           <Flex direction="column">
             <Text
               fontSize="md"
@@ -28,39 +46,76 @@ function TablesTableRow(props) {
               fontWeight="bold"
               minWidth="100%"
             >
-              {name}
+              {colOneMain}
             </Text>
-            <Text fontSize="sm" color="gray.400" fontWeight="normal">
-              {email}
-            </Text>
+            {component === "Products" || component === "Orders" ? (
+              <Text fontSize="sm" color="gray.400" fontWeight="normal">
+                SKU: {colOneSub}
+              </Text>
+            ) : (
+              <Text fontSize="sm" color="gray.400" fontWeight="normal">
+                {colOneSub}
+              </Text>
+            )}
           </Flex>
         </Flex>
       </Td>
 
       <Td>
         <Flex direction="column">
-          <Text fontSize="md" color={textColor} fontWeight="bold">
-            {domain}
-          </Text>
-          <Text fontSize="sm" color="gray.400" fontWeight="normal">
-            {subdomain}
-          </Text>
+          {/* If value is a number then we are rendering product table */}
+          {!isNaN(colTwoMain) ? (
+            <Text fontSize="md" color={textColor} fontWeight="bold">
+              {formatter.format(colTwoMain)}
+            </Text>
+          ) : (
+            <>
+              <Text fontSize="md" color={textColor} fontWeight="bold">
+                {colTwoMain}
+              </Text>
+              <Text fontSize="sm" color="gray.400" fontWeight="normal">
+                {colTwoSub}
+              </Text>
+            </>
+          )}
         </Flex>
       </Td>
       <Td>
-        <Badge
-          bg={status === "Online" ? "green.400" : bgStatus}
-          color={status === "Online" ? "white" : colorStatus}
-          fontSize="16px"
-          p="3px 10px"
-          borderRadius="8px"
-        >
-          {status}
-        </Badge>
+        {component === "Products" ? (
+          <Badge
+            bg={colThree === "NEW" ? "green.400" : bgStatus}
+            color={colThree === "NEW" ? "white" : colorStatus}
+            fontSize="16px"
+            p="3px 10px"
+            borderRadius="8px"
+          >
+            {colThree}
+          </Badge>
+        ) : component === "Orders" ? (
+          <Badge
+            bg={colThree === "Paid" ? "green.400" : bgStatus}
+            color={colThree === "Paid" ? "white" : colorStatus}
+            fontSize="16px"
+            p="3px 10px"
+            borderRadius="8px"
+          >
+            {colThree}
+          </Badge>
+        ) : (
+          <Badge
+            bg={colThree === "Active" ? "green.400" : bgStatus}
+            color={colThree === "Active" ? "white" : colorStatus}
+            fontSize="16px"
+            p="3px 10px"
+            borderRadius="8px"
+          >
+            {colThree}
+          </Badge>
+        )}
       </Td>
       <Td>
         <Text fontSize="md" color={textColor} fontWeight="bold" pb=".5rem">
-          {date}
+          {colFour}
         </Text>
       </Td>
       <Td>
@@ -72,6 +127,18 @@ function TablesTableRow(props) {
             cursor="pointer"
           >
             Edit
+          </Text>
+        </Button>
+      </Td>
+      <Td>
+        <Button p="0px" bg="transparent" variant="no-hover">
+          <Text
+            fontSize="md"
+            color="gray.400"
+            fontWeight="bold"
+            cursor="pointer"
+          >
+            Delete
           </Text>
         </Button>
       </Td>

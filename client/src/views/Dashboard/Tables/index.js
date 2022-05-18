@@ -4,8 +4,6 @@ import React from "react";
 import Authors from "./components/Authors";
 import Projects from "./components/Projects";
 import { tablesTableData, dashboardTableData } from "variables/general";
-import Products from "../Products/components/Products";
-import { productData } from "variables/general";
 
 function Tables() {
   return (

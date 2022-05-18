@@ -15,13 +15,13 @@ import CardBody from "components/Card/CardBody.js";
 import CardHeader from "components/Card/CardHeader.js";
 import TablesTableRow from "components/Tables/TablesTableRow";
 import React from "react";
-import { tablesTableData } from "variables/general";
+import { orderData } from "variables/general";
 
-function Users() {
+function Orders() {
   const textColor = useColorModeValue("gray.700", "white");
-  const title = "Users";
-  const captions = ["User", "Role", "Status", "Registered Date", "", ""];
-  const data = tablesTableData;
+  const title = "Orders";
+  const captions = ["Order #", "Price", "Status", "Qty", "", ""];
+  const data = orderData;
 
   return (
     <Flex direction="column" pt={{ base: "120px", md: "75px" }}>
@@ -52,15 +52,14 @@ function Users() {
               {data.map((row) => {
                 return (
                   <TablesTableRow
-                    key={`${row.email}-${row.name}`}
+                    key={row.id}
                     component={title}
-                    img={row.logo}
-                    colOneMain={row.name}
-                    colOneSub={row.email}
-                    colTwoMain={row.domain}
-                    colTwoSub={row.subdomain}
+                    img={row.img}
+                    colOneMain={row.id}
+                    colOneSub={row.product_number}
+                    colTwoMain={row.amount}
                     colThree={row.status}
-                    colFour={row.date}
+                    colFour={row.quantity}
                   />
                 );
               })}
@@ -72,4 +71,4 @@ function Users() {
   );
 }
 
-export default Users;
+export default Orders;
