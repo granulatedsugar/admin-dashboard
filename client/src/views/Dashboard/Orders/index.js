@@ -13,6 +13,7 @@ import {
 import Card from "components/Card/Card.js";
 import CardBody from "components/Card/CardBody.js";
 import CardHeader from "components/Card/CardHeader.js";
+import { DocumentIcon } from "components/Icons/Icons";
 import TablesTableRow from "components/Tables/TablesTableRow";
 import React from "react";
 import { orderData } from "variables/general";
@@ -54,9 +55,8 @@ function Orders() {
                   <TablesTableRow
                     key={row.id}
                     component={title}
-                    img={row.img}
-                    colOneMain={row.id}
-                    colOneSub={row.product_number}
+                    colOneMain={row.name}
+                    colOneSub={row.id}
                     colTwoMain={row.amount}
                     colThree={row.status}
                     colFour={row.quantity}

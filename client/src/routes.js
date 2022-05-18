@@ -20,6 +20,7 @@ import Products from "views/Dashboard/Products";
 import { HamburgerIcon } from "@chakra-ui/icons";
 import Users from "views/Dashboard/Users";
 import Orders from "views/Dashboard/Orders";
+import SingleProduct from "views/Dashboard/SingleProduct";
 
 var dashRoutes = [
   {
@@ -53,6 +54,13 @@ var dashRoutes = [
     icon: <PersonIcon color="inherit" />,
     component: Users,
     layout: "/admin",
+  },
+  {
+    path: "/product",
+    name: "Product",
+    icon: <PersonIcon color="inherit" />,
+    component: SingleProduct,
+    layout: "/auth",
   },
   // {
   //   path: "/tables",

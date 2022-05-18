@@ -8,6 +8,7 @@ import {
   Tr,
   useColorModeValue,
 } from "@chakra-ui/react";
+import { DocumentIcon } from "components/Icons/Icons";
 import React from "react";
 
 function TablesTableRow(props) {
@@ -38,7 +39,16 @@ function TablesTableRow(props) {
     <Tr>
       <Td minWidth={{ sm: "250px" }} pl="0px">
         <Flex align="center" py=".8rem" minWidth="100%" flexWrap="nowrap">
-          <Avatar src={img} w="50px" borderRadius="12px" me="18px" />
+          {component === "Orders" ? (
+            <DocumentIcon
+              w="50px"
+              borderRadius="12px"
+              me="18px"
+              fontSize="20px"
+            />
+          ) : (
+            <Avatar src={img} w="50px" borderRadius="12px" me="18px" />
+          )}
           <Flex direction="column">
             <Text
               fontSize="md"
@@ -48,7 +58,7 @@ function TablesTableRow(props) {
             >
               {colOneMain}
             </Text>
-            {component === "Products" || component === "Orders" ? (
+            {component === "Products" ? (
               <Text fontSize="sm" color="gray.400" fontWeight="normal">
                 SKU: {colOneSub}
               </Text>
